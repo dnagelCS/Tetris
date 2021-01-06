@@ -17,6 +17,21 @@ public class Tetromino {
     private List<Square> uShape = new ArrayList<>();
     private List<Square> miniShape = new ArrayList<>();
 
+    public Tetromino() {
+        createOShape();
+    }
+
+    private void createOShape() {
+        int x = Grid.WIDTH/2;
+        int y = Grid.HEIGHT;
+        for (int i = 0; i < 4; i++) {
+            oShape.add(new Square(x+i, y));
+            if(i == 1) {
+                y = y - 1;
+            }
+        }
+    }
+
     public List<Square> getOShape() {
           return oShape;
     }
@@ -60,6 +75,9 @@ public class Tetromino {
     public Tetromino rotateClockwise(Tetromino shape) {
         if (oShape.equals(shape)) {
             return this;
+        }
+        if (iShape.equals(shape)) {
+
         }
         //add all shapes
         return shape;
