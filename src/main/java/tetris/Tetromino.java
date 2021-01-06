@@ -198,4 +198,36 @@ public class Tetromino {
     }
 
     //add rotateCounter()
+
+    /**
+     * @return last element/bottom of shape.
+     * Used if the shape reached bottom of grid or other shape at bottom.
+     */
+    public Square getShapeBottom(Tetromino shape) {
+        if (oShape.equals(shape)) {
+            return oShape.get(oShape.size()-1);
+        } else if (iShape.equals(shape)) {
+            return iShape.get(iShape.size() - 1);
+        } else if (jShape.equals(shape)) {
+            return jShape.get(jShape.size() - 1);
+        } else if (lShape.equals(shape)) {
+            return lShape.get(lShape.size() - 1);
+        } else if (sShape.equals(shape)) {
+            return sShape.get(sShape.size() - 1);
+        } else if (zShape.equals(shape)) {
+            return zShape.get(zShape.size() - 1);
+        } else if (tShape.equals(shape)) {
+            return tShape.get(tShape.size() - 1);
+        } else if (pShape.equals(shape)) {
+            return pShape.get(pShape.size() - 1);
+        } else if (uShape.equals(shape)) {
+            return uShape.get(uShape.size() - 1);
+        } else if (miniShape.equals(shape)) {
+            return miniShape.get(miniShape.size() - 1);
+        }
+        //if it's an unhandled shape
+        else {
+            return null;
+        }
+    }
 }
