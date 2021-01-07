@@ -1,9 +1,12 @@
 package tetris;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Tetromino {
+
+    HashMap<Integer, List<Square>> getAllShapes = new HashMap<>();
 
     //class of all 10 tetris shapes
     private List<Square> oShape = new ArrayList<>();
@@ -18,16 +21,7 @@ public class Tetromino {
     private List<Square> miniShape = new ArrayList<>();
 
     public Tetromino() {
-        createOShape();
-        createIShape();
-        createJShape();
-        createLShape();
-        createSShape();
-        createZShape();
-        createTShape();
-        createPShape();
-        createUShape();
-        createMiniShape();
+        getRandomShape();
     }
 
     private void createOShape() {
@@ -186,9 +180,10 @@ public class Tetromino {
         return miniShape;
     }
 
-    public Tetromino rotateClockwise(Tetromino shape) {
+    //need to change this
+    public List rotateClockwise(List<Square> shape) {
         if (oShape.equals(shape)) {
-            return this;
+            return oShape;
         }
         if (iShape.equals(shape)) {
 
@@ -203,7 +198,7 @@ public class Tetromino {
      * @return last element/bottom of shape.
      * Used if the shape reached bottom of grid or other shape at bottom.
      */
-    public Square getShapeBottom(Tetromino shape) {
+    public Square getShapeBottom(List<Square> shape) {
         if (oShape.equals(shape)) {
             return oShape.get(oShape.size()-1);
         } else if (iShape.equals(shape)) {
@@ -229,5 +224,23 @@ public class Tetromino {
         else {
             return null;
         }
+    }
+
+    public void getAllShapes() {
+        getAllShapes.put(1, oShape);
+        getAllShapes.put(2, iShape);
+        getAllShapes.put(3, jShape);
+        getAllShapes.put(4, lShape);
+        getAllShapes.put(5, sShape);
+        getAllShapes.put(6, zShape);
+        getAllShapes.put(7, tShape);
+        getAllShapes.put(8, pShape);
+        getAllShapes.put(9, uShape);
+        getAllShapes.put(10, miniShape);
+    }
+
+    public HashMap<Integer, List<Square>> getRandomShape() {
+        getAllShapes();
+        return getAllShapes;
     }
 }
