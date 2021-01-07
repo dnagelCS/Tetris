@@ -1,12 +1,10 @@
 package tetris;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Tetromino {
 
-    HashMap<Integer, List<Square>> getAllShapes = new HashMap<>();
+    HashMap<Integer, List<Square>> allShapes = new HashMap<>();
 
     //class of all 10 tetris shapes
     private List<Square> oShape = new ArrayList<>();
@@ -227,20 +225,27 @@ public class Tetromino {
     }
 
     public void getAllShapes() {
-        getAllShapes.put(1, oShape);
-        getAllShapes.put(2, iShape);
-        getAllShapes.put(3, jShape);
-        getAllShapes.put(4, lShape);
-        getAllShapes.put(5, sShape);
-        getAllShapes.put(6, zShape);
-        getAllShapes.put(7, tShape);
-        getAllShapes.put(8, pShape);
-        getAllShapes.put(9, uShape);
-        getAllShapes.put(10, miniShape);
+        allShapes.put(1, oShape);
+        allShapes.put(2, iShape);
+        allShapes.put(3, jShape);
+        allShapes.put(4, lShape);
+        allShapes.put(5, sShape);
+        allShapes.put(6, zShape);
+        allShapes.put(7, tShape);
+        allShapes.put(8, pShape);
+        allShapes.put(9, uShape);
+        allShapes.put(10, miniShape);
     }
 
-    public HashMap<Integer, List<Square>> getRandomShape() {
+    public List<Square> getRandomShape() {
+        //populate HashMap with all shapes
         getAllShapes();
-        return getAllShapes;
+        //place all keys into array
+        Object[] keysArray = allShapes.keySet().toArray();
+        //get random key from keysArray
+        Random random = new Random();
+        Object key = keysArray[random.nextInt(keysArray.length)];
+        //return shape value associated with that random key
+        return allShapes.get(key);
     }
 }
