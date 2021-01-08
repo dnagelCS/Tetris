@@ -37,7 +37,7 @@ public class Grid {
     public void moveRight()
     {
         ArrayList<Square> shape = tetro.getFallingShape();
-        for(Square square : tetri.getFallingShape())
+        for(Square square : shape)
         {
             square.setX(square.getX() + CELL_SIZE);
         }
@@ -46,21 +46,37 @@ public class Grid {
     public void moveLeft()
     {
         ArrayList<Square> shape = tetro.getFallingShape();
-        for(Square square : tetri.getFallingShape())
+        for(Square square : shape)
         {
             square.setX(square.getX() - CELL_SIZE);
         }
     }
 
-    private boolean shapeDown()
+    public void removeRow(int row)
     {
-        ArrayList<Square> fallingShape = tetro.getFallingShape();
-        Square bottom = tetro.getShapeBottom(fallingShape);
-        for(ArrayList<Square> shape : tetro.getStillShapes())
+        ArrayList<ArrayList<Square>> stillShapes = tetro.getStillShapes();
+        for(ArrayList<Square> shape : stillShapes)
         {
             for(Square square : shape)
             {
-                if(square.getX() == bottom.getX() && square.getY() == bottom.getY())
+                if(square.getY() == row)
+                {
+                    tetro.removeSquare();
+                }
+            }
+        }
+    }
+
+    private boolean shapeDown()
+    {
+        ArrayList<ArrayList<Square>> stillShapes = tetro.getStillShapes();
+        ArrayList<Square> fallingShape = tetro.getFallingShape();
+        Square bottom = tetro.getShapeBottom(fallingShape);
+        for(ArrayList<Square> shape : stillShapes)
+        {
+            for(Square square : shape)
+            {
+                if(square.getX() == bottom.getX() && square.getY() == bottom.getY() - CELL_SIZE)
                 {
                     return true;
                 }
