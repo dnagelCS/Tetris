@@ -6,18 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TetrominoTest {
 
     @Test
-    public void createOShape() {
+    public void getCurrentShape() {
         //given
         Tetromino tetromino = new Tetromino();
+        tetromino.getRandomShape();
 
         //when
-        List<Square> oShape = new ArrayList<>(tetromino.getOShape());
+        tetromino.getCurrentShape();
 
         //then
-        assertEquals(4, oShape.size());
+        assertTrue(tetromino.getShapesList().contains(tetromino.getCurrentShape()));
     }
 }
