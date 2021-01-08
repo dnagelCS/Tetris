@@ -3,8 +3,8 @@ package tetris;
 import java.util.Objects;
 
 public class Square {
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
 
     public Square(Square square) {
         this.x = square.x;
@@ -23,6 +23,10 @@ public class Square {
     public int getY() {
         return y;
     }
+
+    public void setX(int x) {this.x = x;}
+
+    public void setY(int y) {this.y = y;}
 
     /**
      * @return true if this Square is in the bounds of the Garden, otherwise false.
