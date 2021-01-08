@@ -25,7 +25,7 @@ public class Square {
     }
 
     /**
-     * @return true if this Square is in the bounds of the Garden, otherwise false.
+     * @return true if this Square is in the bounds of the grid, otherwise false.
      */
     public boolean inBounds() {
         return x >= 0 && x < Grid.WIDTH && y >= 0 && y < Grid.HEIGHT;
