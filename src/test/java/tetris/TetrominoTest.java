@@ -2,9 +2,6 @@ package tetris;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -14,7 +11,7 @@ public class TetrominoTest {
     public void getCurrentShape() {
         //given
         Tetromino tetromino = new Tetromino();
-        tetromino.getRandomShape();
+        tetromino.addRandomShape();
 
         //when
         tetromino.getCurrentShape();

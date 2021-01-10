@@ -19,12 +19,12 @@ public class Tetromino {
     private List<Square> miniShape = new ArrayList<>();
 
     public Tetromino() {
-        getAllShapes();
-        getRandomShape();
+        addRandomShape();
         getCurrentShape();
     }
 
-    public void getAllShapes() {
+    //call this once in main
+    public void putAllShapes() {
         allShapes.put(1, oShape);
         allShapes.put(2, iShape);
         allShapes.put(3, jShape);
@@ -41,7 +41,7 @@ public class Tetromino {
         return shapesList;
     }
 
-    public List<Square> getRandomShape() {
+    public void addRandomShape() {
         //place all keys into array
         Object[] keysArray = allShapes.keySet().toArray();
         //get random key from keysArray
@@ -49,8 +49,6 @@ public class Tetromino {
         Object key = keysArray[random.nextInt(keysArray.length)];
         //add this shape to the list
         shapesList.add(allShapes.get(key));
-        //return shape value associated with that random key
-        return allShapes.get(key);
     }
 
     public List<Square> getCurrentShape() {
