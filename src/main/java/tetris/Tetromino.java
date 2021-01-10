@@ -59,7 +59,28 @@ public class Tetromino {
             if (currShape != allShapes.get(i)) {
                 continue;
             } else currShape = allShapes.get(i);
-            //create that shape
+        }
+        //create that shape
+        if (oShape.equals(currShape)) {
+            createOShape();
+        } else if (iShape.equals(currShape)) {
+            createIShape();
+        } else if (jShape.equals(currShape)) {
+            createJShape();
+        } else if (lShape.equals(currShape)) {
+            createLShape();
+        } else if (sShape.equals(currShape)) {
+            createSShape();
+        } else if (zShape.equals(currShape)) {
+            createZShape();
+        } else if (tShape.equals(currShape)) {
+            createTShape();
+        } else if (pShape.equals(currShape)) {
+            createPShape();
+        } else if (uShape.equals(currShape)) {
+            createUShape();
+        } else if (miniShape.equals(currShape)) {
+            createMiniShape();
         }
         return currShape;
     }
