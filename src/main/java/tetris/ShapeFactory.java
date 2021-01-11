@@ -1,6 +1,5 @@
 package tetris;
 
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -10,11 +9,11 @@ public class ShapeFactory {
     /**
      * @return a random new Shape Object
      */
-    private Tetris tetris = new Tetris();
+    private ShapeList shapeList = new ShapeList();
     private final Random rand = new Random();
 
     public Object newInstance() {
-        Object randShape = tetris.getShapeList().get(rand.nextInt());
+        Object randShape = shapeList.getShapeList().get(rand.nextInt());
         return randShape;
     }
 }

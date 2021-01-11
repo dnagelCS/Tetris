@@ -5,7 +5,7 @@ import tetris.shapes.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tetris {
+public class ShapeList {
     private List<Object> shapeList = new ArrayList<>();
 
     public List<Object> getShapeList() {
