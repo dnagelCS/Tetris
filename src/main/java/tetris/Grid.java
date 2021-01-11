@@ -3,6 +3,7 @@ package tetris;
 import java.util.ArrayList;
 
 public class Grid {
+    private boolean[][] grid;
     public static final int WIDTH = 100;
     public static final int HEIGHT = 400;
 
