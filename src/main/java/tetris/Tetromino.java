@@ -1,9 +1,11 @@
 package tetris;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Tetromino {
+
+    private HashMap<Integer, List<Square>> allShapes = new HashMap<>();
+    private ArrayList<List<Square>> shapeHolder = new ArrayList<>();
 
     //class of all 10 tetris shapes
     private List<Square> oShape = new ArrayList<>();
@@ -18,16 +20,7 @@ public class Tetromino {
     private List<Square> miniShape = new ArrayList<>();
 
     public Tetromino() {
-        createOShape();
-        createIShape();
-        createJShape();
-        createLShape();
-        createSShape();
-        createZShape();
-        createTShape();
-        createPShape();
-        createUShape();
-        createMiniShape();
+        getRandomShape();
     }
 
     private void createOShape() {
@@ -186,9 +179,9 @@ public class Tetromino {
         return miniShape;
     }
 
-    public Tetromino rotateClockwise(Tetromino shape) {
+    public List rotateClockwise(List<Square> shape) {
         if (oShape.equals(shape)) {
-            return this;
+            return oShape;
         }
         if (iShape.equals(shape)) {
 
@@ -198,4 +191,69 @@ public class Tetromino {
     }
 
     //add rotateCounter()
+
+    /**
+     * @return last element/bottom of shape.
+     * Used if the shape reached bottom of grid or other shape at bottom.
+     */
+    public Square getShapeBottom() {
+        if (oShape.equals(getCurrentShape())) {
+            return oShape.get(oShape.size()-1);
+        } else if (iShape.equals(getCurrentShape())) {
+            return iShape.get(iShape.size() - 1);
+        } else if (jShape.equals(getCurrentShape())) {
+            return jShape.get(jShape.size() - 1);
+        } else if (lShape.equals(getCurrentShape())) {
+            return lShape.get(lShape.size() - 1);
+        } else if (sShape.equals(getCurrentShape())) {
+            return sShape.get(sShape.size() - 1);
+        } else if (zShape.equals(getCurrentShape())) {
+            return zShape.get(zShape.size() - 1);
+        } else if (tShape.equals(getCurrentShape())) {
+            return tShape.get(tShape.size() - 1);
+        } else if (pShape.equals(getCurrentShape())) {
+            return pShape.get(pShape.size() - 1);
+        } else if (uShape.equals(getCurrentShape())) {
+            return uShape.get(uShape.size() - 1);
+        } else if (miniShape.equals(getCurrentShape())) {
+            return miniShape.get(miniShape.size() - 1);
+        }
+        //if it's an unhandled shape
+        else {
+            return null;
+        }
+    }
+
+    public void getAllShapes() {
+        allShapes.put(1, oShape);
+        allShapes.put(2, iShape);
+        allShapes.put(3, jShape);
+        allShapes.put(4, lShape);
+        allShapes.put(5, sShape);
+        allShapes.put(6, zShape);
+        allShapes.put(7, tShape);
+        allShapes.put(8, pShape);
+        allShapes.put(9, uShape);
+        allShapes.put(10, miniShape);
+    }
+
+    public List<Square> getRandomShape() {
+        //populate HashMap with all shapes
+        getAllShapes();
+        //place all keys into array
+        Object[] keysArray = allShapes.keySet().toArray();
+        //get random key from keysArray
+        Random random = new Random();
+        Object key = keysArray[random.nextInt(keysArray.length)];
+        //return shape value associated with that random key
+        return allShapes.get(key);
+    }
+
+    public List<Square> getCurrentShape() {
+        return shapeHolder.get(0);
+    }
+
+    public ArrayList<List<Square>> getShapeHolder() {
+        return shapeHolder;
+    }
 }
