@@ -3,11 +3,11 @@ package tetris;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class KeyListener extends KeyAdapter {
+public class TetrisKeyListener extends KeyAdapter {
 
     private final Grid grid;
 
-    public KeyListener(Grid grid) {
+    public TetrisKeyListener(Grid grid) {
         this.grid = grid;
     }
 
