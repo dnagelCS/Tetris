@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Grid {
     public static final int WIDTH = 100;
-    public static final int HEIGHT = 40;
+    public static final int HEIGHT = 400;
 
     public static final int CELL_SIZE = 15;
 
@@ -85,8 +85,7 @@ public class Grid {
         return false;
     }
 
-    //possibly unnecessary
-    private int currentLevel()
+    public int currentLevel()
     {
         int highestY = 0;
         for(ArrayList<Square> shape : tetro.getStillShapes())
