@@ -85,19 +85,19 @@ public class Grid {
         return false;
     }
 
-    public int currentLevel()
+    public boolean levelExceededGrid()
     {
-        int highestY = 0;
+        int lowestY = HEIGHT;
         for(ArrayList<Square> shape : tetro.getStillShapes())
         {
             for(Square square : shape)
             {
-                if(square.getY() > highestY)
+                if(square.getY() < lowestY)
                 {
-                    highestY = square.getY();
+                    lowestY = square.getY();
                 }
             }
         }
-        return highestY;
+        return lowestY <= 0;
     }
 }
