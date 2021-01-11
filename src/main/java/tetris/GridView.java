@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class GridView extends JComponent {
     private Grid grid;
-    private Tetromino tetro;
     private static final int CELL_SIZE = 15;
     
     public GridView(Grid grid) {
@@ -30,8 +29,5 @@ public class GridView extends JComponent {
     }
 
     private void paintCurrShape(Graphics g) {
-        if (tetro.getCurrentShape() != null) {
-
-        }
     }
 }
