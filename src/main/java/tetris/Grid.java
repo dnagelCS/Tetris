@@ -1,5 +1,7 @@
 package tetris;
 
+import tetris.shapes.AllShapes;
+
 import java.util.ArrayList;
 
 public class Grid {
@@ -8,9 +10,9 @@ public class Grid {
     public static final int HEIGHT = 40;
     public static final int CELL_SIZE = 10;
     private final ShapeFactory factory;
-    private Object currentShape;
+    private AllShapes currentShape;
     private final int rows = HEIGHT / CELL_SIZE;
-    private final int cols = WIDTH / CELL_SIZE
+    private final int cols = WIDTH / CELL_SIZE;
     private Square[][] fixedSquares = new Square[rows + 1][cols];
 
     public Grid(ShapeFactory factory) {

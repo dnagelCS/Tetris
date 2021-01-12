@@ -1,10 +1,14 @@
 package tetris.shapes;
 
+import tetris.Square;
+
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class AllShapes {
     private Color color;
-    private int xGridCoord, yGridCoord, xShapeCoord, yShapeCoord;
+    protected ArrayList<Square> squaresList;
+    private Square center;
     private boolean canRotate;
     private boolean fixed;
     private boolean inBounds;
@@ -17,29 +21,17 @@ public abstract class AllShapes {
         return color;
     }
 
-    public void setGridCoords(int x, int y) {
-        this.xGridCoord = x;
-        this.yGridCoord = y;
+    public ArrayList<Square> getSquares() {
+        return squaresList;
     }
 
-    public int getXGrid() {
-        return xGridCoord;
+    public void move(int xChange, int yChange) {
+        center.setX(center.getX() + xChange);
+        center.setY(center.getY() + yChange);
     }
 
-    public int getYGrid() {
-        return yGridCoord;
-    }
+    public void rotate()
+    {
 
-    public void setShapeCoords(int x, int y) {
-        this.xShapeCoord = x;
-        this.yShapeCoord = y;
-    }
-
-    public int getXShape() {
-        return xShapeCoord;
-    }
-
-    public int getYShape() {
-        return yShapeCoord;
     }
 }

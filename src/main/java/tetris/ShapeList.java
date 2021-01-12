@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeList {
-    private List<Object> shapeList = new ArrayList<>();
+    private List<AllShapes> shapeList = new ArrayList<>();
 
-    public List<Object> getShapeList() {
+    public List<AllShapes> getShapeList() {
         return shapeList;
     }
 
