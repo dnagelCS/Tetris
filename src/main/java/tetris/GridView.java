@@ -40,7 +40,7 @@ public class GridView extends JComponent {
             for (int col = 0; col < Grid.COLS; col++) {
                 if (fixedSquares[row][col] != null) {
                     g.setColor(fixedSquares[row][col].getColor());
-                    g.fillRect(fixedSquares[row][col].getX() * CELL_SIZE, fixedSquares[row][col].getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+                    g.fillRect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE);
                 }
             }
         }
@@ -48,11 +48,13 @@ public class GridView extends JComponent {
 
     private void paintCurrShape(Graphics g) {
         AllShapes shape = grid.getCurrentShape();
+        int xGrid = shape.getXGrid();
+        int yGrid = shape.getYGrid();
         ArrayList<Square> squares = shape.getSquares();
         for(Square square : squares)
         {
             g.setColor(square.getColor());
-            g.fillRect(square.getX() * CELL_SIZE, square.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            g.fillRect((square.getX() + xGrid) * CELL_SIZE, (square.getY() + yGrid) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
     }
 }

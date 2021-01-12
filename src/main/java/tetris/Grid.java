@@ -1,5 +1,7 @@
 package tetris;
 
+import tetris.shapes.AllShapes;
+
 import java.util.ArrayList;
 
 public class Grid {
@@ -8,10 +10,10 @@ public class Grid {
     public static final int HEIGHT = 40;
     public static final int CELL_SIZE = 10;
     private final ShapeFactory factory;
-    private Object currentShape;
-    private final int rows = HEIGHT / CELL_SIZE;
-    private final int cols = WIDTH / CELL_SIZE
-    private Square[][] fixedSquares = new Square[rows + 1][cols];
+    private AllShapes currentShape;
+    public static final int ROWS = HEIGHT / CELL_SIZE;
+    public static final int COLS = WIDTH / CELL_SIZE;
+    private Square[][] fixedSquares = new Square[ROWS + 1][COLS];
 
     public Grid(ShapeFactory factory) {
         this.factory = factory;
@@ -53,18 +55,17 @@ public class Grid {
         currentShape.move(-1, 0);
     }
 
-    public void rotateClockwise()
-    {
+    public void rotateClockwise() {
         currentShape.rotate();
     }
 
     private int fullRow() {
         int fullRow = -1;
-        for (int row = 1; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
                 if (fixedSquares[row][col] == null) {
                     break;
-                } else if (row == rows - 1) {
+                } else if (row == ROWS - 1) {
                     fullRow = row;
                     return fullRow;
                 }
@@ -74,7 +75,7 @@ public class Grid {
     }
 
     private void removeRow(int row) {
-        for (int col = 0; col < cols; col++) {
+        for (int col = 0; col < COLS; col++) {
             fixedSquares[row][col] = null;
         }
     }
@@ -82,17 +83,12 @@ public class Grid {
     private boolean shapeDown() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
-            for (int row = 1; row < rows; row++) {
-                for (int col = 0; col < cols; col++) {
-                    if (fixedSquares[row][col] != null) {
-                        Square fixedSquare = fixedSquares[row][col];
-                        if (shapeSquare.getX() == fixedSquare.getX() && shapeSquare.getY() == fixedSquare.getY() - CELL_SIZE) {
-                            return true;
-                        }
-                    }
-                }
+            int row = shapeSquare.getY() - CELL_SIZE;
+            int col = shapeSquare.getX();
+            if (fixedSquares[row][col] != null) {
+                return true;
             }
-            if(shapeSquare.getY() == HEIGHT - 10)
+            if(shapeSquare.getY() == HEIGHT - CELL_SIZE)
             {
                 return true;
             }
@@ -101,11 +97,19 @@ public class Grid {
     }
 
     private boolean levelExceedsGrid() {
-        for (int col = 0; col < cols; col++) {
+        for (int col = 0; col < COLS; col++) {
             if (fixedSquares[0][col] != null) {
                 return false;
             }
         }
         return true;
+    }
+
+    public Square[][] getFixedSquares() {
+        return fixedSquares;
+    }
+
+    public AllShapes getCurrentShape() {
+        return currentShape;
     }
 }
