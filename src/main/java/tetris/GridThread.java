@@ -1,6 +1,6 @@
 package tetris;
 
-public class GridThread {
+public class GridThread extends Thread{
 
         private static final int DELAY_MS = 80;
         private int currentDelay;
