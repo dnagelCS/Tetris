@@ -6,7 +6,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class AbstractShape {
-    private Color color;
     private ArrayList<Square> squaresList;
     private int x, y;
     private Square center;
@@ -18,14 +17,6 @@ public abstract class AbstractShape {
         this.squaresList = squaresList;
         this.x = x;
         this.y = y;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Color getColor() {
-        return color;
     }
 
     public ArrayList<Square> getSquares() {
