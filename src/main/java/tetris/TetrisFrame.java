@@ -21,12 +21,12 @@ public class TetrisFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris");
         setLayout(new BorderLayout());
-        setBackground(Color.DARK_GRAY);
 
         panel = new JPanel();
         play = new JButton("Play \u25B6");
         //play.addActionListener(actionEvent -> playLoop());
         //panel.add(play);
+        setBackground(Color.DARK_GRAY);
 
         add(gridView);
         add(panel, BorderLayout.EAST);

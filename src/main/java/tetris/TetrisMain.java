@@ -7,7 +7,7 @@ public class TetrisMain {
         GridView view = new GridView(grid);
         TetrisKeyListener keyListener = new TetrisKeyListener(grid);
         GridThread gridThread = new GridThread(grid, view);
-        gridThread.run();
+        gridThread.start();
         new TetrisFrame(grid, view, keyListener).setVisible(true);
     }
 }

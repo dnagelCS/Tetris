@@ -37,6 +37,23 @@ public abstract class AbstractShape {
 
     public void rotate()
     {
-
+        for(Square square : squaresList)
+        {
+            int squareX = square.getX();
+            int squareY = square.getY();
+            if (squareX == 0)
+            {
+                square.setY(0);
+            }
+            else if(squareX > 0)
+            {
+                square.setY(-Math.abs(squareX));
+            }
+            else if(squareX < 0)
+            {
+                square.setY(Math.abs(squareX));
+            }
+            square.setX(squareY);
+        }
     }
 }
