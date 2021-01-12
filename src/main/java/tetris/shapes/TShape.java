@@ -19,9 +19,9 @@ public class TShape extends AbstractShape {
      *           (0,-1)
      */
     private void createTShape() {
-        getSquares().add(new Square(getX() - 1, getY(), Color.WHITE));
-        getSquares().add(new Square(getX(), getY(), Color.WHITE));
-        getSquares().add(new Square(getX() + 1, getY(), Color.WHITE));
-        getSquares().add(new Square(getX(), getY() - 1, Color.WHITE));
+        squaresList.add(new Square(getX() - 1, getY(), Color.WHITE));
+        squaresList.add(new Square(getX(), getY(), Color.WHITE));
+        squaresList.add(new Square(getX() + 1, getY(), Color.WHITE));
+        squaresList.add(new Square(getX(), getY() - 1, Color.WHITE));
     }
 }

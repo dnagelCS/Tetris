@@ -18,9 +18,9 @@ public class JShape extends AbstractShape {
      *  (-1,-1) O O (0,-1)
      */
     private void createJShape() {
-        getSquares().add(new Square(getX(), getY() + 1, Color.ORANGE));
-        getSquares().add(new Square(getX(), getY(), Color.ORANGE));
-        getSquares().add(new Square(getX(), getY() - 1, Color.ORANGE));
-        getSquares().add(new Square(getX() - 1, getY() - 1, Color.ORANGE));
+        squaresList.add(new Square(getX(), getY() + 1, Color.ORANGE));
+        squaresList.add(new Square(getX(), getY(), Color.ORANGE));
+        squaresList.add(new Square(getX(), getY() - 1, Color.ORANGE));
+        squaresList.add(new Square(getX() - 1, getY() - 1, Color.ORANGE));
     }
 }
