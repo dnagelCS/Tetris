@@ -2,16 +2,13 @@ package tetris.shapes;
 
 import tetris.Square;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 
-public class IShape extends AllShapes{
-    private List<Square> iShape = new ArrayList<>();
-    private int x = 0;
-    private int y = 0;
+public class IShape extends AbstractShape {
 
-    public IShape() {
-       createIShape();
+    public IShape(int x, int y) {
+        super(x, y);
+        createIShape();
     }
 
     /**
@@ -20,9 +17,9 @@ public class IShape extends AllShapes{
      * (0,-1) (0,0) (0,1) (0,2)
      */
     private void createIShape() {
-        iShape.add(new Square(x, y - 1));
-        iShape.add(new Square(x, y));
-        iShape.add(new Square(x, y + 1));
-        iShape.add(new Square(x, y + 2));
+        getSquares().add(new Square(getShapeX(), getShapeY() - 1, Color.RED));
+        getSquares().add(new Square(getShapeX(), getShapeY(), Color.RED));
+        getSquares().add(new Square(getShapeX(), getShapeY() + 1, Color.RED));
+        getSquares().add(new Square(getShapeX(), getShapeY() + 2, Color.RED));
     }
 }
