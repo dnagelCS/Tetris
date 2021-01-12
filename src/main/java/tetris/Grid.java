@@ -10,8 +10,8 @@ public class Grid {
 
     private final ShapeFactory factory;
     private TetrisShape currentShape;
-    private int rows = HEIGHT / CELL_SIZE;
-    private int cols = WIDTH / CELL_SIZE
+    private final int rows = HEIGHT / CELL_SIZE;
+    private final int cols = WIDTH / CELL_SIZE
     private Square[][] fixedSquares = new Square[rows + 1][cols];
 
     public Grid(ShapeFactory factory) {
