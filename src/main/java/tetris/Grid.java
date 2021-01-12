@@ -6,98 +6,98 @@ public class Grid {
     public static final int WIDTH = 100;
     public static final int HEIGHT = 400;
 
-    public static final int CELL_SIZE = 15;
+    public static final int CELL_SIZE = 10;
 
-    private final Tetromino tetro;
+    private final ShapeFactory factory;
+    private TetrisShape currentShape;
+    private int rows = HEIGHT / CELL_SIZE;
+    private int cols = WIDTH / CELL_SIZE
+    private Square[][] fixedSquares = new Square[rows + 1][cols];
 
-    public Grid(Tetromino tetro)
-    {
-        this.tetro = tetro;
+    public Grid(ShapeFactory factory) {
+        this.factory = factory;
+        this.currentShape = factory.getCurrentShape();
     }
 
-    public void lowerShape()
-    {
-        ArrayList<Square> shape = tetro.getFallingShape();
-        for(Square square : shape)
-        {
-            square.setY(square.getY() - CELL_SIZE);
-        }
-    }
-
-    public void dropShape()
-    {
-        ArrayList<Square> shape = tetro.getFallingShape();
-        while(!shapeDown()) {
-            for (Square square : shape) {
-                square.setY(square.getY() - CELL_SIZE);
+    public boolean proceed() {
+        if (!levelExceededGrid()) {
+            if (fullRow() >= 0) {
+                removeRow(fullRow());
             }
+            if (shapeNotDown()) {
+                lowerShape();
+            } else {
+                for (Square square : currentShape.getSquares()) {
+                    fixedSquares[square.getY() + 1][square.getX()] = square;
+                }
+                currentShape = factory.generateRandomShape();
+            }
+            return true;
+        } else return false;
+    }
+
+    private void lowerShape() {
+        currentShape.move(0, -1);
+    }
+
+    public void dropShape() {
+        while (shapeNotDown()) {
+            currentShape.move(0, -1);
         }
     }
 
-    public void moveRight()
-    {
-        ArrayList<Square> shape = tetro.getFallingShape();
-        for(Square square : shape)
-        {
-            square.setX(square.getX() + CELL_SIZE);
-        }
+    public void moveRight() {
+        currentShape.move(1, 0);
     }
 
-    public void moveLeft()
-    {
-        ArrayList<Square> shape = tetro.getFallingShape();
-        for(Square square : shape)
-        {
-            square.setX(square.getX() - CELL_SIZE);
-        }
+    public void moveLeft() {
+        currentShape.move(-1, 0);
     }
 
-    public void removeRow(int row)
-    {
-        ArrayList<ArrayList<Square>> stillShapes = tetro.getStillShapes();
-        for(ArrayList<Square> shape : stillShapes)
-        {
-            for(Square square : shape)
-            {
-                if(square.getY() == row)
-                {
-                    tetro.removeSquare();
+    private int fullRow() {
+        int fullRow = -1;
+        for (int row = 1; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (fixedSquares[row][col] == null) {
+                    break;
+                } else if (row == rows - 1) {
+                    fullRow = row;
+                    return fullRow;
                 }
             }
         }
+        return fullRow;
     }
 
-    private boolean shapeDown()
-    {
-        ArrayList<ArrayList<Square>> stillShapes = tetro.getStillShapes();
-        ArrayList<Square> fallingShape = tetro.getFallingShape();
-        Square bottom = tetro.getShapeBottom(fallingShape);
-        for(ArrayList<Square> shape : stillShapes)
-        {
-            for(Square square : shape)
-            {
-                if(square.getX() == bottom.getX() && square.getY() == bottom.getY() - CELL_SIZE)
-                {
-                    return true;
+    private void removeRow(int row) {
+        for (int col = 0; col < cols; col++) {
+            fixedSquares[row][col] = null;
+        }
+    }
+
+    private boolean shapeNotDown() {
+        ArrayList<Square> squaresList = currentShape.getSquares();
+        for (Square shapeSquare : squaresList) {
+            for (int row = 1; row < rows; row++) {
+                for (int col = 0; col < cols; col++) {
+                    if (fixedSquares[row][col] != null) {
+                        Square fixedSquare = fixedSquares[row][col];
+                        if (shapeSquare.getX() == fixedSquare.getX() && shapeSquare.getY() == fixedSquare.getY() - CELL_SIZE) {
+                            return false;
+                        }
+                    }
                 }
             }
         }
-        return false;
+        return true;
     }
 
-    public boolean levelExceededGrid()
-    {
-        int lowestY = HEIGHT;
-        for(ArrayList<Square> shape : tetro.getStillShapes())
-        {
-            for(Square square : shape)
-            {
-                if(square.getY() < lowestY)
-                {
-                    lowestY = square.getY();
-                }
+    private boolean levelExceededGrid() {
+        for (int col = 0; col < cols; col++) {
+            if (fixedSquares[0][col] != null) {
+                return false;
             }
         }
-        return lowestY <= 0;
+        return true;
     }
 }
