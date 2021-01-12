@@ -18,9 +18,9 @@ public class OShape extends AbstractShape {
      *   (-1,-1) O O (0,-1)
      */
     private void createOShape() {
-        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.BLUE));
-        getSquares().add(new Square(getShapeX(), getShapeY(), Color.BLUE));
-        getSquares().add(new Square(getShapeX() - 1, getShapeY() - 1, Color.BLUE));
-        getSquares().add(new Square(getShapeX(), getShapeY() - 1, Color.BLUE));
+        squaresList.add(new Square(getShapeX() - 1, getShapeY(), Color.BLUE));
+        squaresList.add(new Square(getShapeX(), getShapeY(), Color.BLUE));
+        squaresList.add(new Square(getShapeX() - 1, getShapeY() - 1, Color.BLUE));
+        squaresList.add(new Square(getShapeX(), getShapeY() - 1, Color.BLUE));
     }
 }

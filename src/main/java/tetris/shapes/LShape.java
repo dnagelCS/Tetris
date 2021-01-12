@@ -18,9 +18,9 @@ public class LShape extends AbstractShape {
      *   (0,-1) O O (1,-1)
      */
     private void createLShape() {
-        getSquares().add(new Square(getShapeX(), getShapeY() + 1, Color.YELLOW));
-        getSquares().add(new Square(getShapeX(), getShapeY(), Color.YELLOW));
-        getSquares().add(new Square(getShapeX(), getShapeY() - 1, Color.YELLOW));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY() - 1, Color.YELLOW));
+        squaresList.add(new Square(getShapeX(), getShapeY() + 1, Color.YELLOW));
+        squaresList.add(new Square(getShapeX(), getShapeY(), Color.YELLOW));
+        squaresList.add(new Square(getShapeX(), getShapeY() - 1, Color.YELLOW));
+        squaresList.add(new Square(getShapeX() + 1, getShapeY() - 1, Color.YELLOW));
     }
 }

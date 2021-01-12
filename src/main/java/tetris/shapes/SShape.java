@@ -17,9 +17,9 @@ public class SShape extends AbstractShape {
      *   (-1,0) O O   (0,0)
      */
     private void createSShape() {
-        getSquares().add(new Square(getShapeX(), getShapeY() + 1, Color.PINK));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 1, Color.PINK));
-        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.PINK));
-        getSquares().add(new Square(getShapeX(), getShapeY(), Color.PINK));
+        squaresList.add(new Square(getShapeX(), getShapeY() + 1, Color.PINK));
+        squaresList.add(new Square(getShapeX() + 1, getShapeY() + 1, Color.PINK));
+        squaresList.add(new Square(getShapeX() - 1, getShapeY(), Color.PINK));
+        squaresList.add(new Square(getShapeX(), getShapeY(), Color.PINK));
     }
 }

@@ -5,7 +5,7 @@ import tetris.Square;
 import java.util.ArrayList;
 
 public abstract class AbstractShape {
-    private ArrayList<Square> squaresList;
+    protected ArrayList<Square> squaresList;
     private int shapeX = 0, shapeY = 0;
     private int gridX, gridY;
     private Square center;
@@ -16,6 +16,7 @@ public abstract class AbstractShape {
     public AbstractShape(int gridX, int gridY) {
         this.gridX = gridX;
         this.gridY = gridY;
+        squaresList = new ArrayList<>();
     }
 
     public ArrayList<Square> getSquares() {
