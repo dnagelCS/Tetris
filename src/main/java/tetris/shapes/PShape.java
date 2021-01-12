@@ -18,10 +18,10 @@ public class PShape extends AbstractShape {
      *   (0,-1) O
      */
     private void createPShape() {
-        getSquares().add(new Square(getShapeX(),getShapeY() + 1, Color.CYAN));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 1, Color.CYAN));
-        getSquares().add(new Square(getShapeX(), getShapeY(), Color.CYAN));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY(), Color.CYAN));
-        getSquares().add(new Square(getShapeX(), getShapeY() - 1, Color.CYAN));
+        getSquares().add(new Square(getX(), getY() + 1, Color.CYAN));
+        getSquares().add(new Square(getX() + 1, getY() + 1, Color.CYAN));
+        getSquares().add(new Square(getX(), getY(), Color.CYAN));
+        getSquares().add(new Square(getX() + 1, getY(), Color.CYAN));
+        getSquares().add(new Square(getX(), getY() - 1, Color.CYAN));
     }
 }

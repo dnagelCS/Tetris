@@ -19,12 +19,12 @@ public class UShape extends AbstractShape {
      *           (0,0)
      */
     private void createUShape() {
-        getSquares().add(new Square(getShapeX() - 1, getShapeY() + 2, Color.MAGENTA));
-        getSquares().add(new Square(getShapeX() - 1, getShapeY() + 1, Color.MAGENTA));
-        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.MAGENTA));
-        getSquares().add(new Square(getShapeX(), getShapeY(), Color.MAGENTA));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY(), Color.MAGENTA));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 1, Color.MAGENTA));
-        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 2, Color.MAGENTA));
+        getSquares().add(new Square(getX() - 1, getY() + 2, Color.MAGENTA));
+        getSquares().add(new Square(getX() - 1, getY() + 1, Color.MAGENTA));
+        getSquares().add(new Square(getX() - 1, getY(), Color.MAGENTA));
+        getSquares().add(new Square(getX(), getY(), Color.MAGENTA));
+        getSquares().add(new Square(getX() + 1, getY(), Color.MAGENTA));
+        getSquares().add(new Square(getX() + 1, getY() + 1, Color.MAGENTA));
+        getSquares().add(new Square(getX() + 1, getY() + 2, Color.MAGENTA));
     }
 }

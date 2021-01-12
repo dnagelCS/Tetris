@@ -48,8 +48,8 @@ public class GridView extends JComponent {
 
     private void paintCurrShape(Graphics g) {
         AbstractShape shape = grid.getCurrentShape();
-        int gridX = shape.getGridX();
-        int gridY = shape.getGridY();
+        int gridX = shape.getX();
+        int gridY = shape.getY();
         ArrayList<Square> squares = shape.getSquares();
         for(Square square : squares)
         {
