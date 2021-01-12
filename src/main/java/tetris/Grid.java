@@ -20,11 +20,11 @@ public class Grid {
     }
 
     public boolean proceed() {
-        if (!levelExceededGrid()) {
+        if (!levelExceedsGrid()) {
             if (fullRow() >= 0) {
                 removeRow(fullRow());
             }
-            if (shapeNotDown()) {
+            if (!shapeDown()) {
                 lowerShape();
             } else {
                 for (Square square : currentShape.getSquares()) {
@@ -41,7 +41,7 @@ public class Grid {
     }
 
     public void dropShape() {
-        while (shapeNotDown()) {
+        while (shapeDown()) {
             currentShape.move(0, -1);
         }
     }
@@ -75,7 +75,7 @@ public class Grid {
         }
     }
 
-    private boolean shapeNotDown() {
+    private boolean shapeDown() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
             for (int row = 1; row < rows; row++) {
@@ -83,16 +83,20 @@ public class Grid {
                     if (fixedSquares[row][col] != null) {
                         Square fixedSquare = fixedSquares[row][col];
                         if (shapeSquare.getX() == fixedSquare.getX() && shapeSquare.getY() == fixedSquare.getY() - CELL_SIZE) {
-                            return false;
+                            return true;
                         }
                     }
                 }
             }
+            if(shapeSquare.getY() == HEIGHT - 10)
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
-    private boolean levelExceededGrid() {
+    private boolean levelExceedsGrid() {
         for (int col = 0; col < cols; col++) {
             if (fixedSquares[0][col] != null) {
                 return false;
