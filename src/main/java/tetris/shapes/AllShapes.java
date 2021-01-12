@@ -2,7 +2,7 @@ package tetris.shapes;
 
 import java.awt.*;
 
-public abstract class SuperShape {
+public abstract class AllShapes {
     private Color color;
     private int xGridCoord, yGridCoord, xShapeCoord, yShapeCoord;
     private boolean canRotate;
