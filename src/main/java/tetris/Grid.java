@@ -8,14 +8,14 @@ public class Grid {
     public static final int HEIGHT = 40;
     public static final int CELL_SIZE = 10;
     private final ShapeFactory factory;
-    private TetrisShape currentShape;
+    private Object currentShape;
     private final int rows = HEIGHT / CELL_SIZE;
     private final int cols = WIDTH / CELL_SIZE
     private Square[][] fixedSquares = new Square[rows + 1][cols];
 
     public Grid(ShapeFactory factory) {
         this.factory = factory;
-        this.currentShape = factory.getCurrentShape();
+        this.currentShape = factory.newInstance();
     }
 
     public boolean proceed() {
@@ -29,13 +29,13 @@ public class Grid {
                 for (Square square : currentShape.getSquares()) {
                     fixedSquares[square.getY() + 1][square.getX()] = square;
                 }
-                currentShape = factory.generateRandomShape();
+                currentShape = factory.newInstance();
             }
             return true;
         } else return false;
     }
 
-    private void lowerShape() {
+    public void lowerShape() {
         currentShape.move(0, -1);
     }
 
