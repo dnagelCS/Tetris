@@ -35,6 +35,7 @@ public class Square {
         Square segment = (Square) o;
         return x == segment.x &&
                 y == segment.y;
+
     }
 
     @Override
