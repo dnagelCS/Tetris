@@ -28,13 +28,6 @@ public class Square {
 
     public void setY(int y) {this.y = y;}
 
-    /**
-     * @return true if this Square is in the bounds of the Garden, otherwise false.
-     */
-    public boolean inBounds() {
-        return x >= 0 && x < Grid.WIDTH && y >= 0 && y < Grid.HEIGHT;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

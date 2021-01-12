@@ -7,6 +7,7 @@ public class SuperShape {
     private int xGridCoord, yGridCoord, xShapeCoord, yShapeCoord;
     private boolean canRotate;
     private boolean fixed;
+    private boolean inBounds;
 
     public void setColor(Color color) {
         this.color = color;
