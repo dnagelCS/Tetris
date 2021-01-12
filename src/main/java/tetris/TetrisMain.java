@@ -5,9 +5,9 @@ public class TetrisMain {
         ShapeFactory shapeFactory = new ShapeFactory();
         Grid grid = new Grid(shapeFactory);
         GridView view = new GridView(grid);
-        TetrisKeyListener keyListener = new TetrisKeyListener();
+        TetrisKeyListener keyListener = new TetrisKeyListener(grid);
         GridThread gridThread = new GridThread(grid, view);
-        thread.start();
-        new GameFrame(grid,view).setVisible(true);
+        gridThread.run();
+        new TetrisFrame(grid, view, keyListener).setVisible(true);
     }
 }

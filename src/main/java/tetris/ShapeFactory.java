@@ -1,5 +1,7 @@
 package tetris;
 
+import tetris.shapes.AllShapes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,10 +13,10 @@ public class ShapeFactory {
     /**
      * @return a random new Shape Object
      */
-    private List<Object> shapeList = new ArrayList<>();
+    private List<AllShapes> shapeList = new ArrayList<>();
     private final Random rand = new Random();
 
-    public Object newInstance() {
+    public AllShapes newInstance() {
         return shapeList.get(rand.nextInt(shapeList.size()));
     }
 }

@@ -5,7 +5,7 @@ import tetris.Square;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UShape {
+public class UShape extends AllShapes{
     private List<Square> uShape = new ArrayList<>();
     private int x = 0;
     private int y = 0;

@@ -3,17 +3,19 @@ package tetris;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameFrame extends JFrame {
+public class TetrisFrame extends JFrame {
     private Grid grid;
     private GridView gridView;
+    private TetrisKeyListener keyListener;
     private JPanel panel;
     private JPanel upcomingShapePanel;
     private JButton play;
     private int delay = 200;
 
-    public GameFrame(Grid grid, GridView gridView) {
+    public TetrisFrame(Grid grid, GridView gridView, TetrisKeyListener keyListener) {
         this.grid = grid;
         this.gridView = gridView;
+        this.keyListener = keyListener;
 
         setSize(420, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -21,11 +23,12 @@ public class GameFrame extends JFrame {
         setLayout(new BorderLayout());
 
         play = new JButton("Play \u25B6");
-        play.addActionListener(actionEvent -> playLoop());
+        //play.addActionListener(actionEvent -> playLoop());
         panel.add(play);
 
         add(gridView);
         add(panel, BorderLayout.EAST);
+        addKeyListener(keyListener);
     }
 
     private void playLoop() {
