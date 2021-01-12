@@ -1,6 +1,6 @@
 package tetris;
 
-import tetris.shapes.AllShapes;
+import tetris.shapes.AbstractShape;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class Grid {
     public static final int HEIGHT = 40;
     public static final int CELL_SIZE = 10;
     private final ShapeFactory factory;
-    private AllShapes currentShape;
+    private AbstractShape currentShape;
     public static final int ROWS = HEIGHT / CELL_SIZE;
     public static final int COLS = WIDTH / CELL_SIZE;
     private Square[][] fixedSquares = new Square[ROWS + 1][COLS];
@@ -109,7 +109,7 @@ public class Grid {
         return fixedSquares;
     }
 
-    public AllShapes getCurrentShape() {
+    public AbstractShape getCurrentShape() {
         return currentShape;
     }
 }

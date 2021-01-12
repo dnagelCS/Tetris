@@ -1,6 +1,6 @@
 package tetris;
 
-import tetris.shapes.AllShapes;
+import tetris.shapes.AbstractShape;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +47,7 @@ public class GridView extends JComponent {
     }
 
     private void paintCurrShape(Graphics g) {
-        AllShapes shape = grid.getCurrentShape();
+        AbstractShape shape = grid.getCurrentShape();
         int xGrid = shape.getXGrid();
         int yGrid = shape.getYGrid();
         ArrayList<Square> squares = shape.getSquares();
