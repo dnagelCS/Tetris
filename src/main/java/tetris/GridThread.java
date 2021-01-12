@@ -20,8 +20,7 @@ public class GridThread {
          * Every second, lower shape and repaint the grid
          */
         public void run() {
-            while (!grid.levelExceedsGrid()) {
-                grid.lowerShape();
+            while (grid.proceed()) {
                 gridView.repaint();
                 try {
                     decrementDelay();
