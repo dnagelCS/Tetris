@@ -17,9 +17,9 @@ public class ZShape extends AbstractShape {
      *     (0,0)   O O (1,0)
      */
     private void createZShape() {
-        squaresList.add(new Square(getShapeX() - 1, getShapeY() + 1, Color.LIGHT_GRAY));
-        squaresList.add(new Square(getShapeX(), getShapeY() + 1, Color.LIGHT_GRAY));
-        squaresList.add(new Square(getShapeX(), getShapeY(), Color.LIGHT_GRAY));
-        squaresList.add(new Square(getShapeX() + 1, getShapeY(), Color.LIGHT_GRAY));
+        squaresList.add(new Square(getX() - 1, getY() + 1, Color.LIGHT_GRAY));
+        squaresList.add(new Square(getX(), getY() + 1, Color.LIGHT_GRAY));
+        squaresList.add(new Square(getX(), getY(), Color.LIGHT_GRAY));
+        squaresList.add(new Square(getX() + 1, getY(), Color.LIGHT_GRAY));
     }
 }

@@ -6,16 +6,15 @@ import java.util.ArrayList;
 
 public abstract class AbstractShape {
     protected ArrayList<Square> squaresList;
-    private int shapeX = 0, shapeY = 0;
-    private int gridX, gridY;
+    private int x = 0, y = 0;
     private Square center;
     private boolean canRotate;
     private boolean fixed;
     private boolean inBounds;
 
-    public AbstractShape(int gridX, int gridY) {
-        this.gridX = gridX;
-        this.gridY = gridY;
+    public AbstractShape(int x, int y) {
+        this.x = x;
+        this.y = y;
         squaresList = new ArrayList<>();
     }
 
@@ -23,25 +22,17 @@ public abstract class AbstractShape {
         return squaresList;
     }
 
-    public int getShapeX() {
-        return shapeX;
+    public int getX() {
+        return x;
     }
 
-    public int getShapeY() {
-        return shapeY;
-    }
-
-    public int getGridX() {
-        return gridX;
-    }
-
-    public int getGridY() {
-        return gridY;
+    public int getY() {
+        return y;
     }
 
     public void move(int xChange, int yChange) {
-        gridX += xChange;
-        gridY += yChange;
+        x += xChange;
+        y += yChange;
     }
 
     public void rotate()
