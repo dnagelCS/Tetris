@@ -3,11 +3,10 @@ package tetris;
 import java.util.ArrayList;
 
 public class Grid {
+    private boolean[][] grid;
     public static final int WIDTH = 100;
-    public static final int HEIGHT = 400;
-
+    public static final int HEIGHT = 40;
     public static final int CELL_SIZE = 10;
-
     private final ShapeFactory factory;
     private TetrisShape currentShape;
     private final int rows = HEIGHT / CELL_SIZE;
