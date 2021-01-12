@@ -54,6 +54,11 @@ public class Grid {
         currentShape.move(-1, 0);
     }
 
+    public void rotateClockwise()
+    {
+        currentShape.rotate();
+    }
+
     private int fullRow() {
         int fullRow = -1;
         for (int row = 1; row < rows; row++) {
