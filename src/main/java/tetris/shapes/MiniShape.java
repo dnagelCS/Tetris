@@ -2,15 +2,12 @@ package tetris.shapes;
 
 import tetris.Square;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 
-public class MiniShape extends AllShapes{
-    private List<Square> miniShape = new ArrayList<>();
-    private int x = 0;
-    private int y = 0;
+public class MiniShape extends AbstractShape {
 
-    public MiniShape() {
+    public MiniShape(int x, int y) {
+        super(x, y);
         createMiniShape();
     }
 
@@ -19,7 +16,7 @@ public class MiniShape extends AllShapes{
      *    (-1,0) O O (0,0)
      */
     private void createMiniShape() {
-        miniShape.add(new Square(x - 1, y));
-        miniShape.add(new Square(x, y));
+        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.GREEN));
+        getSquares().add(new Square(getShapeX(), getShapeY(), Color.GREEN));
     }
 }

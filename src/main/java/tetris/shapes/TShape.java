@@ -2,15 +2,12 @@ package tetris.shapes;
 
 import tetris.Square;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 
-public class TShape extends AllShapes{
-    private List<Square> tShape = new ArrayList<>();
-    private int x = 0;
-    private int y = 0;
+public class TShape extends AbstractShape {
 
-    public TShape() {
+    public TShape(int x, int y) {
+        super(x, y);
         createTShape();
     }
 
@@ -22,9 +19,9 @@ public class TShape extends AllShapes{
      *           (0,-1)
      */
     private void createTShape() {
-        tShape.add(new Square(x - 1, y));
-        tShape.add(new Square(x, y));
-        tShape.add(new Square(x + 1, y));
-        tShape.add(new Square(x, y - 1));
+        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.WHITE));
+        getSquares().add(new Square(getShapeX(), getShapeY(), Color.WHITE));
+        getSquares().add(new Square(getShapeX() + 1, getShapeY(), Color.WHITE));
+        getSquares().add(new Square(getShapeX(), getShapeY() - 1, Color.WHITE));
     }
 }

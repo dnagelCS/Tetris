@@ -2,15 +2,12 @@ package tetris.shapes;
 
 import tetris.Square;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
 
-public class UShape extends AllShapes{
-    private List<Square> uShape = new ArrayList<>();
-    private int x = 0;
-    private int y = 0;
+public class UShape extends AbstractShape {
 
-    public UShape() {
+    public UShape(int x, int y) {
+        super(x, y);
         createUShape();
     }
 
@@ -22,12 +19,12 @@ public class UShape extends AllShapes{
      *           (0,0)
      */
     private void createUShape() {
-        uShape.add(new Square(x - 1, y + 2));
-        uShape.add(new Square(x - 1, y + 1));
-        uShape.add(new Square(x - 1, y));
-        uShape.add(new Square(x, y));
-        uShape.add(new Square(x + 1, y));
-        uShape.add(new Square(x + 1, y + 1));
-        uShape.add(new Square(x + 1, y + 2));
+        getSquares().add(new Square(getShapeX() - 1, getShapeY() + 2, Color.MAGENTA));
+        getSquares().add(new Square(getShapeX() - 1, getShapeY() + 1, Color.MAGENTA));
+        getSquares().add(new Square(getShapeX() - 1, getShapeY(), Color.MAGENTA));
+        getSquares().add(new Square(getShapeX(), getShapeY(), Color.MAGENTA));
+        getSquares().add(new Square(getShapeX() + 1, getShapeY(), Color.MAGENTA));
+        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 1, Color.MAGENTA));
+        getSquares().add(new Square(getShapeX() + 1, getShapeY() + 2, Color.MAGENTA));
     }
 }
