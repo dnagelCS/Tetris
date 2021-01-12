@@ -21,6 +21,7 @@ public class TetrisFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tetris");
         setLayout(new BorderLayout());
+        setBackground(Color.DARK_GRAY);
 
         play = new JButton("Play \u25B6");
         //play.addActionListener(actionEvent -> playLoop());
