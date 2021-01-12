@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Grid {
     private boolean[][] grid;
-    public static final int WIDTH = 500;
-    public static final int HEIGHT = 800;
-    public static final int CELL_SIZE = 10;
+    public static final int WIDTH = 450;
+    public static final int HEIGHT = 600;
+    public static final int CELL_SIZE = 15;
     private final ShapeFactory factory;
     private AbstractShape currentShape;
     public static final int ROWS = HEIGHT/CELL_SIZE;

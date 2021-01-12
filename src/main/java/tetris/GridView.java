@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class GridView extends JComponent {
     private Grid grid;
-    private static final int CELL_SIZE = 10;
+    private static final int CELL_SIZE = 15;
     
     public GridView(Grid grid) {
         this.grid = grid;
