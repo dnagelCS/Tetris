@@ -48,13 +48,13 @@ public class GridView extends JComponent {
 
     private void paintCurrShape(Graphics g) {
         AbstractShape shape = grid.getCurrentShape();
-        int xGrid = shape.getXGrid();
-        int yGrid = shape.getYGrid();
+        int gridX = shape.getGridX();
+        int gridY = shape.getGridY();
         ArrayList<Square> squares = shape.getSquares();
         for(Square square : squares)
         {
             g.setColor(square.getColor());
-            g.fillRect((square.getX() + xGrid) * CELL_SIZE, (square.getY() + yGrid) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            g.fillRect((square.getX() + gridX) * CELL_SIZE, (square.getY() + gridY) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
     }
 }
