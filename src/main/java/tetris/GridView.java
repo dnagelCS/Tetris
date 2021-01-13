@@ -23,7 +23,10 @@ public class GridView extends JComponent {
     }
 
     private void paintGrid(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(0,0,100));
+        g.fillRect(0,0,Grid.WIDTH, Grid.HEIGHT);
+
+        g.setColor(Color.BLACK);
         for (int i = 0; i < Grid.ROWS; i++) {
             g.drawLine(0, i * Grid.CELL_SIZE, Grid.WIDTH, i * Grid.CELL_SIZE);
         }
