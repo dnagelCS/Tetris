@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class GridView extends JComponent {
     private Grid grid;
-    private static final int CELL_SIZE = 15;
+    private static final int WIDTH = Grid.getWidth();
+    private static final int HEIGHT = Grid.getHeight();
+    private static final int CELL_SIZE = Grid.getCellSize();
     
     public GridView(Grid grid) {
         this.grid = grid;
@@ -23,19 +25,22 @@ public class GridView extends JComponent {
     }
 
     private void paintGrid(Graphics g) {
-        g.setColor(Color.WHITE);
+        g.setColor(new Color(0, 0, 100));
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        g.setColor(Color.BLACK);
         for (int i = 0; i < Grid.ROWS; i++) {
-            g.drawLine(0, i * Grid.CELL_SIZE, Grid.WIDTH, i * Grid.CELL_SIZE);
+            g.drawLine(0, i * CELL_SIZE, WIDTH, i * CELL_SIZE);
         }
 
         for (int i = 0; i < Grid.COLS; i++) {
-            g.drawLine(i * CELL_SIZE, 0, i * Grid.CELL_SIZE, Grid.HEIGHT);
+            g.drawLine(i * CELL_SIZE, 0, i * CELL_SIZE, HEIGHT);
         }
     }
 
     private void paintFixedSquares(Graphics g){
         Square[][] fixedSquares = grid.getFixedSquares();
-        for (int row = 1; row < Grid.ROWS; row++) {
+        for (int row = 0; row < Grid.ROWS; row++) {
             for (int col = 0; col < Grid.COLS; col++) {
                 if (fixedSquares[row][col] != null) {
                     g.setColor(fixedSquares[row][col].getColor());
