@@ -65,7 +65,7 @@ public class Grid {
 
     private int fullRow() {
         int fullRow = -1;
-        for (int row = 1; row < ROWS; row++) {
+        for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
                 if (fixedSquares[row][col] == null) {
                     break;
@@ -111,14 +111,6 @@ public class Grid {
         return false;
     }
 
-    public Square[][] getFixedSquares() {
-        return fixedSquares;
-    }
-
-    public AbstractShape getCurrentShape() {
-        return currentShape;
-    }
-
     private boolean leftBound() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
@@ -137,6 +129,26 @@ public class Grid {
             }
         }
         return true;
+    }
+
+    public Square[][] getFixedSquares() {
+        return fixedSquares;
+    }
+
+    public AbstractShape getCurrentShape() {
+        return currentShape;
+    }
+
+    public static int getWidth() {
+        return WIDTH;
+    }
+
+    public static int getHeight() {
+        return HEIGHT;
+    }
+
+    public static int getCellSize() {
+        return CELL_SIZE;
     }
 
 }
