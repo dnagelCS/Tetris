@@ -7,11 +7,9 @@ import java.util.ArrayList;
 public class Grid {
     public static final int WIDTH = 450;
     public static final int HEIGHT = 600;
-    public static final int CELL_SIZE = 20;
+    public static final int CELL_SIZE = 15;
     private final ShapeFactory factory;
     private AbstractShape currentShape;
-    public static final int ROWS = HEIGHT;
-    public static final int COLS = WIDTH;
     private ArrayList<Square> fixedSquares = new ArrayList<>();
 
     public Grid(ShapeFactory factory) {
@@ -20,8 +18,8 @@ public class Grid {
     }
 
     public boolean proceed() {
-        if (!levelExceedsGrid()) {
-            /*if (fullRow() >= 0) {
+        if (!levelExceedsGrid()) {/*
+            if (fullRow() >= 0) {
                 removeRow(fullRow());
             }*/
             if (!shapeDown()) {
@@ -124,7 +122,7 @@ public class Grid {
     private boolean rightBound() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
-            if (shapeSquare.getX() + currentShape.getX() + CELL_SIZE > WIDTH + CELL_SIZE) {
+            if (shapeSquare.getX() + currentShape.getX() > WIDTH - CELL_SIZE*2) {
                 return false;
             }
         }
