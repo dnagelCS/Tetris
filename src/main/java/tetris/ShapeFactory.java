@@ -12,7 +12,7 @@ public class ShapeFactory {
      * @return a random new Shape Object
      */
     private final Random rand = new Random();
-    private int startX = 50;
+    private int startX = 225;
     private int startY = 0;
 
     public AbstractShape newInstance() {

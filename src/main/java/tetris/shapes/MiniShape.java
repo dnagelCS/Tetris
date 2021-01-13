@@ -16,7 +16,7 @@ public class MiniShape extends AbstractShape {
      *    (-1,0) O O (0,0)
      */
     private void createMiniShape() {
-        squaresList.add(new Square(getX() - 1, getY(), Color.GREEN));
-        squaresList.add(new Square(getX(), getY(), Color.GREEN));
+        squaresList.add(new Square(-1,0, Color.GREEN));
+        squaresList.add(new Square(0, 0, Color.GREEN));
     }
 }

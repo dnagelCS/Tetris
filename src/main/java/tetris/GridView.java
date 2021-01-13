@@ -24,7 +24,6 @@ public class GridView extends JComponent {
 
     private void paintGrid(Graphics g) {
         g.setColor(Color.WHITE);
-
         for (int i = 0; i < Grid.ROWS; i++) {
             g.drawLine(0, i * Grid.CELL_SIZE, Grid.WIDTH, i * Grid.CELL_SIZE);
         }
@@ -54,7 +53,7 @@ public class GridView extends JComponent {
         for(Square square : squares)
         {
             g.setColor(square.getColor());
-            g.fillRect((square.getX() + gridX) * CELL_SIZE, (square.getY() + gridY) * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            g.fillRect(gridX + square.getX() * CELL_SIZE,  gridY + square.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
     }
 }

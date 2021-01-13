@@ -17,9 +17,9 @@ public class IShape extends AbstractShape {
      * (0,-1) (0,0) (0,1) (0,2)
      */
     private void createIShape() {
-        squaresList.add(new Square(getX(), getY() - 1, Color.RED));
-        squaresList.add(new Square(getX(), getY(), Color.RED));
-        squaresList.add(new Square(getX(), getY() + 1, Color.RED));
-        squaresList.add(new Square(getX(), getY() + 2, Color.RED));
+        squaresList.add(new Square(0,-1, Color.RED));
+        squaresList.add(new Square(0, 0, Color.RED));
+        squaresList.add(new Square(0, 1, Color.RED));
+        squaresList.add(new Square(0, 2, Color.RED));
     }
 }

@@ -2,7 +2,7 @@ package tetris;
 
 public class GridThread extends Thread{
 
-        private static final int DELAY_MS = 80;
+        private static final int DELAY_MS = 100;
         private int currentDelay;
         private int currentRound;
 
