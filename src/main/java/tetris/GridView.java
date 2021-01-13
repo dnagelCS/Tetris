@@ -29,11 +29,11 @@ public class GridView extends JComponent {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         g.setColor(Color.BLACK);
-        for (int i = 0; i < Grid.ROWS; i++) {
+        for (int i = 0; i < HEIGHT/CELL_SIZE; i++) {
             g.drawLine(0, i * CELL_SIZE, WIDTH, i * CELL_SIZE);
         }
 
-        for (int i = 0; i < Grid.COLS; i++) {
+        for (int i = 0; i < WIDTH/CELL_SIZE; i++) {
             g.drawLine(i * CELL_SIZE, 0, i * CELL_SIZE, HEIGHT);
         }
     }
