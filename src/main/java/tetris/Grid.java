@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Grid {
     public static final int WIDTH = 450;
     public static final int HEIGHT = 600;
-    public static final int CELL_SIZE = 20;
+    public static final int CELL_SIZE = 15;
     private final ShapeFactory factory;
     private AbstractShape currentShape;
     public static final int ROWS = HEIGHT/CELL_SIZE;
