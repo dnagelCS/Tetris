@@ -5,7 +5,6 @@ import tetris.shapes.AbstractShape;
 import java.util.ArrayList;
 
 public class Grid {
-    private boolean[][] grid;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 600;
     public static final int CELL_SIZE = 15;
