@@ -42,7 +42,7 @@ public class Grid {
     }
 
     public void dropShape() {
-        while (shapeDown()) {
+        while (!shapeDown()) {
             currentShape.move(0, CELL_SIZE);
         }
     }
