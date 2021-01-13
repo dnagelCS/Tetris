@@ -39,14 +39,10 @@ public class GridView extends JComponent {
     }
 
     private void paintFixedSquares(Graphics g){
-        Square[][] fixedSquares = grid.getFixedSquares();
-        for (int row = 0; row < Grid.ROWS; row++) {
-            for (int col = 0; col < Grid.COLS; col++) {
-                if (fixedSquares[row][col] != null) {
-                    g.setColor(fixedSquares[row][col].getColor());
-                    g.fillRect(col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-                }
-            }
+        ArrayList<Square> fixedSquares = grid.getFixedSquares();
+        for (Square square : fixedSquares) {
+            g.setColor(square.getColor());
+            g.fillRect(square.getX(), square.getY(), CELL_SIZE, CELL_SIZE);
         }
     }
 
