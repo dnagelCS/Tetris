@@ -5,12 +5,14 @@ import tetris.shapes.AbstractShape;
 import java.util.ArrayList;
 
 public class Grid {
-    public static final int WIDTH = 450;
+    public static final int WIDTH = 440;
     public static final int HEIGHT = 600;
-    public static final int CELL_SIZE = 15;
+    public static final int CELL_SIZE = 20;
+    public static final int COLS = WIDTH/CELL_SIZE;
+    public static final int ROWS = HEIGHT/CELL_SIZE;
     private final ShapeFactory factory;
     private AbstractShape currentShape;
-    private ArrayList<Square> fixedSquares = new ArrayList<>();
+    private final Square[][] gridSquares = new Square[ROWS][COLS];
 
     public Grid(ShapeFactory factory) {
         this.factory = factory;
@@ -26,9 +28,9 @@ public class Grid {
                 lowerShape();
             } else {
                 for (Square square : currentShape.getSquares()) {
-                    square.setX((square.getX()*CELL_SIZE) + currentShape.getX());
+                    square.setX(square.getX()*CELL_SIZE + currentShape.getX());
                     square.setY(square.getY()*CELL_SIZE + currentShape.getY());
-                    fixedSquares.add(square);
+                    gridSquares[square.getY()/CELL_SIZE][square.getX()/CELL_SIZE] = square;
                 }
                 currentShape = factory.newInstance();
             }
@@ -61,38 +63,36 @@ public class Grid {
     public void rotateClockwise() {
         currentShape.rotate();
     }
-/*
-    private int fullRow() {
-        int fullRow = -1;
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                if (fixedSquares[row][col] == null) {
-                    break;
-                } else if (row == ROWS - 1) {
-                    fullRow = row;
-                    return fullRow;
+    /*
+        private int fullRow() {
+            int fullRow = -1;
+            for (int row = 0; row < ROWS; row++) {
+                for (int col = 0; col < COLS; col++) {
+                    if (fixedSquares[row][col] == null) {
+                        break;
+                    } else if (row == ROWS - 1) {
+                        fullRow = row;
+                        return fullRow;
+                    }
                 }
             }
+            return fullRow;
         }
-        return fullRow;
-    }
-
-    private void removeRow(int row) {
-        for (int col = 0; col < COLS; col++) {
-            fixedSquares[row][col] = null;
+        private void removeRow(int row) {
+            for (int col = 0; col < COLS; col++) {
+                fixedSquares[row][col] = null;
+            }
         }
-    }
-*/
+    */
     private boolean shapeDown() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
-            for(Square fixed : fixedSquares){
-                if ((shapeSquare.getX() + currentShape.getX()) == fixed.getX() &&
-                        (shapeSquare.getY() + currentShape.getY()) == (fixed.getY() - CELL_SIZE)) {
+            int xVal = shapeSquare.getX()*CELL_SIZE + currentShape.getX();
+            int yVal = shapeSquare.getY()*CELL_SIZE + currentShape.getY() + CELL_SIZE;
+            if(gridSquares[yVal / CELL_SIZE][xVal / CELL_SIZE] != null){
                     return true;
                 }
-            }
-            if(shapeSquare.getY() + currentShape.getY() + CELL_SIZE == HEIGHT - CELL_SIZE)
+            else if(yVal == HEIGHT - CELL_SIZE)
             {
                 return true;
             }
@@ -101,10 +101,8 @@ public class Grid {
     }
 
     private boolean levelExceedsGrid() {
-        for (Square square : fixedSquares) {
-            if (square.getY() <= 0) {
-                return true;
-            }
+        for (int x = 0; x < COLS; x++) {
+            if (gridSquares[0][x] != null) return true;
         }
         return false;
     }
@@ -129,8 +127,8 @@ public class Grid {
         return true;
     }
 
-    public ArrayList<Square> getFixedSquares() {
-        return fixedSquares;
+    public Square[][] getGridSquares() {
+        return gridSquares;
     }
 
     public AbstractShape getCurrentShape() {
