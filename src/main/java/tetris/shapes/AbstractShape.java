@@ -6,11 +6,7 @@ import java.util.ArrayList;
 
 public abstract class AbstractShape {
     protected ArrayList<Square> squaresList;
-    private int x = 0, y = 0;
-    private Square center;
-    private boolean canRotate;
-    private boolean fixed;
-    private boolean inBounds;
+    private int x, y;
 
     public AbstractShape(int x, int y) {
         this.x = x;
