@@ -5,12 +5,14 @@ import tetris.shapes.AbstractShape;
 import java.util.ArrayList;
 
 public class Grid {
-    public static final int WIDTH = 450;
+    public static final int WIDTH = 300;
     public static final int HEIGHT = 600;
-    public static final int CELL_SIZE = 15;
+    public static final int CELL_SIZE = 30;
+    public static final int COLS = WIDTH / CELL_SIZE;
+    public static final int ROWS = HEIGHT / CELL_SIZE;
     private final ShapeFactory factory;
     private AbstractShape currentShape;
-    private ArrayList<Square> fixedSquares = new ArrayList<>();
+    private final Square[][] gridSquares = new Square[ROWS][COLS];
 
     public Grid(ShapeFactory factory) {
         this.factory = factory;
@@ -18,17 +20,17 @@ public class Grid {
     }
 
     public boolean proceed() {
-        if (!levelExceedsGrid()) {/*
+        if (!levelExceedsGrid()) {
             if (fullRow() >= 0) {
                 removeRow(fullRow());
-            }*/
+            }
             if (!shapeDown()) {
                 lowerShape();
             } else {
                 for (Square square : currentShape.getSquares()) {
-                    square.setX((square.getX()*CELL_SIZE) + currentShape.getX());
-                    square.setY(square.getY()*CELL_SIZE + currentShape.getY());
-                    fixedSquares.add(square);
+                    square.setX(square.getX() * CELL_SIZE + currentShape.getX());
+                    square.setY(square.getY() * CELL_SIZE + currentShape.getY());
+                    gridSquares[square.getY() / CELL_SIZE][square.getX() / CELL_SIZE] = square;
                 }
                 currentShape = factory.newInstance();
             }
@@ -47,13 +49,13 @@ public class Grid {
     }
 
     public void moveRight() {
-        if(rightBound()) {
+        if (rightBound()) {
             currentShape.move(CELL_SIZE, 0);
         }
     }
 
     public void moveLeft() {
-        if(leftBound()) {
+        if (leftBound()) {
             currentShape.move(-CELL_SIZE, 0);
         }
     }
@@ -61,14 +63,14 @@ public class Grid {
     public void rotateClockwise() {
         currentShape.rotate();
     }
-/*
+
     private int fullRow() {
         int fullRow = -1;
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
-                if (fixedSquares[row][col] == null) {
+                if (gridSquares[row][col] == null) {
                     break;
-                } else if (row == ROWS - 1) {
+                } else if (col == COLS - 1) {
                     fullRow = row;
                     return fullRow;
                 }
@@ -79,21 +81,29 @@ public class Grid {
 
     private void removeRow(int row) {
         for (int col = 0; col < COLS; col++) {
-            fixedSquares[row][col] = null;
+            gridSquares[row][col] = null;
+            for (int nextRow = row - 1; nextRow >= 0; nextRow--) {
+                if (gridSquares[nextRow][col] != null) {
+                    if (nextRow + 1 < ROWS - 1) {
+                        if (gridSquares[nextRow + 1][col] == null) {
+                            gridSquares[nextRow + 1][col] = gridSquares[nextRow][col];
+                            gridSquares[nextRow][col] = null;
+                        } else gridSquares[row - 1][col] = gridSquares[nextRow][col];
+                    } else gridSquares[row - 1][col] = gridSquares[nextRow][col];
+
+                }
+            }
         }
     }
-*/
+
     private boolean shapeDown() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
-            for(Square fixed : fixedSquares){
-                if ((shapeSquare.getX() + currentShape.getX()) == fixed.getX() &&
-                        (shapeSquare.getY() + currentShape.getY()) == (fixed.getY() - CELL_SIZE)) {
-                    return true;
-                }
-            }
-            if(shapeSquare.getY() + currentShape.getY() + CELL_SIZE == HEIGHT - CELL_SIZE)
-            {
+            int xVal = shapeSquare.getX() * CELL_SIZE + currentShape.getX();
+            int yVal = shapeSquare.getY() * CELL_SIZE + currentShape.getY() + CELL_SIZE;
+            if (gridSquares[yVal / CELL_SIZE][xVal / CELL_SIZE] != null) {
+                return true;
+            } else if (yVal == HEIGHT - CELL_SIZE) {
                 return true;
             }
         }
@@ -101,10 +111,8 @@ public class Grid {
     }
 
     private boolean levelExceedsGrid() {
-        for (Square square : fixedSquares) {
-            if (square.getY() <= 0) {
-                return true;
-            }
+        for (int x = 0; x < COLS; x++) {
+            if (gridSquares[0][x] != null) return true;
         }
         return false;
     }
@@ -122,15 +130,15 @@ public class Grid {
     private boolean rightBound() {
         ArrayList<Square> squaresList = currentShape.getSquares();
         for (Square shapeSquare : squaresList) {
-            if (shapeSquare.getX() + currentShape.getX() > WIDTH - CELL_SIZE*2) {
+            if (shapeSquare.getX() + currentShape.getX() > WIDTH - CELL_SIZE * 2) {
                 return false;
             }
         }
         return true;
     }
 
-    public ArrayList<Square> getFixedSquares() {
-        return fixedSquares;
+    public Square[][] getGridSquares() {
+        return gridSquares;
     }
 
     public AbstractShape getCurrentShape() {

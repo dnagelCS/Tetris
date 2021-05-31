@@ -4,6 +4,8 @@ import tetris.shapes.*;
 
 import java.util.Random;
 
+import static tetris.Grid.WIDTH;
+
 /**
  * Factory class for creating new Shape objects within the Grid.
  */
@@ -12,7 +14,7 @@ public class ShapeFactory {
      * @return a random new Shape Object
      */
     private final Random rand = new Random();
-    private int startX = 225;
+    private int startX = WIDTH/2;
     private int startY = 0;
 
     public AbstractShape newInstance() {
